@@ -1,0 +1,7 @@
+node_modules
+cypress/videos
+cypress/screenshots
+config.json
+google_credentials.json
+.DS_Store
+google_token.json

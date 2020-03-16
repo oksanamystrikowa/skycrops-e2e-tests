@@ -1,0 +1,9 @@
+{
+    "cypress": {
+        "emailTesting": {
+            "mailboxTo": "<YOUR_EMAIL@EXAMPLE.COM>",
+            "mailboxFrom": "hello@skycrops.co",
+            "userFullName": "Maria Kowalska"
+        }
+    }
+}
