@@ -13,7 +13,7 @@ describe('sending a preorder form', () => {
     beforeEach(() => {
         cy
             .visit('https://www.skycrops.co')
-            .get('#gatsby-focus-wrapper > div > div > div > div > button').eq(1)
+            .get('#gatsby-focus-wrapper > div > div > div > div > button').eq(0)
             .click()
     })
     context('when filling the pre-order form with valid data and send the', () => {

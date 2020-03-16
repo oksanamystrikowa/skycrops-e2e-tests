@@ -12,7 +12,7 @@ describe('Email receiving', () => {
     before(() => {
         cy
             .visit('https://www.skycrops.co')
-            .get('#gatsby-focus-wrapper > div > div > div > div > button').eq(1)
+            .get('#gatsby-focus-wrapper > div > div > div > div > button').eq(0)
             .click()
 
         cy
@@ -39,9 +39,6 @@ describe('Email receiving', () => {
         cy
             .get('body > div:nth-child(12) > div > div.ant-modal-wrap > div > div.ant-modal-content > div > div> form > div > button')
             .click()
-        cy
-            .get('body > div:nth-child(12) > div > div.ant-modal-wrap > div > div.ant-modal-content > div > div')
-            .should('be.visible')
     })
 
     context("when pre-order form was sent", () => {
