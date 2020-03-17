@@ -45,7 +45,7 @@ describe('top menu buttons', () => {
                 .wait(2000)
                 .get('#gatsby-focus-wrapper > div > div > div > div > div > button:nth-child(1)')
                 .eq(0)
-                // .click()
+                .click()
                 .get('#gatsby-focus-wrapper > div > div > div > div > div > p').eq(0)
                 .invoke('text')
                 .then(text => expect(text).to.eq('pl'))
