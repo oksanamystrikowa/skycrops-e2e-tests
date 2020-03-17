@@ -31,8 +31,25 @@ describe('top menu buttons', () => {
                 .contains('calculator')
                 .click()
                 .wait(2000)
-                .get('#gatsby-focus-wrapper > div > main > div > div > div > div:nth-child(1) > div')
+                .get('#gatsby-focus-wrapper > div > main > div')
                 .isInViewportFully()
+
+        })
+    })
+    context('and when translation button is selected', () => {
+        it('should content be translated', () => {
+            cy
+                .get('#gatsby-focus-wrapper > div > div > div > div > div > p')
+                .wait(2000)
+                .trigger('mouseover')
+                .wait(2000)
+                .get('#gatsby-focus-wrapper > div > div > div > div > div > button:nth-child(1)')
+                .eq(0)
+                // .click()
+                .get('#gatsby-focus-wrapper > div > div > div > div > div > p').eq(0)
+                .invoke('text')
+                .then(text => expect(text).to.eq('pl'))
+                
 
         })
     })
