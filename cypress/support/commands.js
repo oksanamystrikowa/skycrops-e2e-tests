@@ -25,26 +25,50 @@
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 
 
+const isInViewportFullyCheck = (rect, screenHeight) => rect.top >= 0 && rect.bottom <= screenHeight
+const isInViewportPartlyCheck = (rect, screenHeight) => (rect.bottom >= 0 && rect.top <= 0) || (rect.bottom >= screenHeight && rect.top <= screenHeight)
+const isInViewport = (rect, screenHeight) => isInViewportFullyCheck(rect, screenHeight) || isInViewportPartlyCheck(rect, screenHeight)
 
-
-Cypress.Commands.add('isFullyInViewport', { prevSubject: true },(subject) => {
-  const screenHeight = Cypress.$(cy.state('window')).height();
-  const rect = subject[0].getBoundingClientRect();
+Cypress.Commands.add('isInViewportFully', { prevSubject: true },(subject) => {
+  const screenHeight = Cypress.$(cy.state('window')).height()
+  const rect = subject[0].getBoundingClientRect()
 
   expect(
-    rect.top >= 0 && rect.bottom <= screenHeight
+    isInViewportFullyCheck(rect, screenHeight)
   ).to.be.true
   
-  return subject;
-});
+  return subject
+})
 
-Cypress.Commands.add('isFullyNotInViewport', { prevSubject: true },(subject) => {
-  const screenHeight = Cypress.$(cy.state('window')).height();
-  const rect = subject[0].getBoundingClientRect();
+Cypress.Commands.add('isInViewportPartly', { prevSubject: true },(subject) => {
+  const screenHeight = Cypress.$(cy.state('window')).height()
+  const rect = subject[0].getBoundingClientRect()
 
   expect(
-    rect.top >= 0 && rect.bottom <= screenHeight
-  ).to.be.false
+    isInViewportPartlyCheck(rect, screenHeight)
+  ).to.be.true
+  
+  return subject
+})
 
-  return subject;
-});
+Cypress.Commands.add('isInViewport', { prevSubject: true },(subject) => {
+  const screenHeight = Cypress.$(cy.state('window')).height()
+  const rect = subject[0].getBoundingClientRect()
+
+  expect(
+    isInViewport(rect, screenHeight)
+  ).to.be.true
+
+  return subject
+})
+
+Cypress.Commands.add('notInViewport', { prevSubject: true },(subject) => {
+  const screenHeight = Cypress.$(cy.state('window')).height()
+  const rect = subject[0].getBoundingClientRect()
+
+  expect(
+    isInViewport(rect, screenHeight)
+  ).to.be.false
+  
+  return subject
+})
