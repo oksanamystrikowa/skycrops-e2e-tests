@@ -12,5 +12,8 @@
   "devDependencies": {
     "cypress": "^4.1.0",
     "gmail-tester": "^1.2.4"
+  },
+  "dependencies": {
+    "lodash": "^4.17.15"
   }
 }
