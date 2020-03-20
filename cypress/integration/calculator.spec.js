@@ -47,8 +47,6 @@ describe('calculator', () => {
             context('when user enters value for "The amount of chemical compound" g/ha', () => {
                 const amountOfChemicalCompoundGHa = random(1, 50000)
                 const amountOfChemicalCompoundKgHa = (amountOfChemicalCompoundGHa / 1000)
-                console.log('amountOfChemicalCompoundGHa', amountOfChemicalCompoundGHa)
-                console.log('elements[elementName].percentage', elements[elementName].percentage)
                 const amountOfElementGHa = (elements[elementName].percentage * amountOfChemicalCompoundGHa / 100)
                 const amountOfElementKgHa = (amountOfElementGHa / 1000)
                 const amountOfElementMlHa = (amountOfElementGHa * 22.4 / elements[elementName].molarMass)
