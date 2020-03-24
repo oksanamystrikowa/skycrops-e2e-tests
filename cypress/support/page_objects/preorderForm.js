@@ -17,6 +17,27 @@ module.exports = {
         cy
             .get('body > div:nth-child(12) > div > div.ant-modal-wrap > div > div.ant-modal-content > div > div> form > div > button')
             .click()
+    },
+    submitPreOrderForm(data) {
+        const {
+            userFullName,
+            userEmail,
+            userPhoneNumber,
+            orchardArea,
+            userStreet,
+            userPostCode,
+            userCity
+        } = data
+
+        cy.get('[name="fullName"]').type(userFullName)
+        cy.get('[name="email"]').type(userEmail)
+        cy.get('[name="phone"]').type(userPhoneNumber)
+        cy.get('[name="orchardArea"]').type(orchardArea)
+        cy.get('[name="street"]').type(userStreet)
+        cy.get('[name="postCode"]').type(userPostCode)
+        cy.get('[name="city"]').type(userCity)
+
+        this.sendFormButtonClick()
     }
 
 }
