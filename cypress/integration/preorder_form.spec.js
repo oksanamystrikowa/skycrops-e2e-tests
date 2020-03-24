@@ -1,4 +1,7 @@
-/// <reference types = "cypress"/>
+const {
+    random
+} = require('lodash')
+const preorderFormPageObject = require('../support/page_objects/preorderForm.js')
 
 const {
     cypress: {
@@ -11,43 +14,137 @@ const {
 
 describe('sending a preorder form', () => {
     beforeEach(() => {
-        cy
-            .visit('https://www.skycrops.co')
-            .get('#gatsby-focus-wrapper > div > div > div > div > button').eq(0)
-            .click()
+        preorderFormPageObject.getPreorderForm()
     })
-    context('when filling the pre-order form with valid data and send the', () => {
+    context('when filling the pre-order form with valid data and send the form', () => {
         it('should show the succesfully sending message', () => {
 
+
+            preorderFormPageObject.getFullNameField().type(userFullName)
+            preorderFormPageObject.getEmailField().type(mailboxTo)
+            preorderFormPageObject.getPhoneNumberField().type('48123123123')
+            preorderFormPageObject.getOrchardAreaField().type('2')
+            preorderFormPageObject.getStreetField().type('ul.Rynek')
+            preorderFormPageObject.getPostCodeField().type('44-100')
+            preorderFormPageObject.getCityField().type('Gliwice')
+            preorderFormPageObject.sendFormButtonClick()
             cy
-                .get('[name="fullName"]')
-                .type(userFullName)
-            cy
-                .get('[name="email"]')
-                .type(mailboxTo)
-            cy
-                .get('[name="phone"]')
-                .type('+48123123123')
-            cy
-                .get('[name="orchardArea"]')
-                .type('2')
-            cy
-                .get('[name="street"]')
-                .type('ul.Rynek')
-            cy
-                .get('[name="postCode"]')
-                .type('44-100')
-            cy
-                .get('[name="city"]')
-                .type('Gliwice')
-            cy
-                .get('body > div:nth-child(12) > div > div.ant-modal-wrap > div > div.ant-modal-content > div > div> form > div > button')
-                .click()
-            cy
-                .get('body > div:nth-child(12) > div > div.ant-modal-wrap > div > div.ant-modal-content > div > div')
+                .contains('Thank you!')
                 .should('be.visible')
 
         })
 
+    })
+    context('when filling the pre-order form with invalid full name data and send the form', () => {
+        it('should show the validation message', () => {
+
+            preorderFormPageObject.getFullNameField().type('qwe123')
+            preorderFormPageObject.getEmailField().type(mailboxTo)
+            preorderFormPageObject.getPhoneNumberField().type('48123123123')
+            preorderFormPageObject.getOrchardAreaField().type('2')
+            preorderFormPageObject.getStreetField().type('ul.Rynek')
+            preorderFormPageObject.getPostCodeField().type('44-100')
+            preorderFormPageObject.getCityField().type('Gliwice')
+            preorderFormPageObject.sendFormButtonClick()
+            preorderFormPageObject.getFullNameField().should(($mydatefield) => {
+                expect($mydatefield.get(0).validationMessage).to.equal('Please match the format requested.')
+            })
+
+        })
+
+        context('when filling the pre-order form with invalid email data and send the form', () => {
+            it('should show the validation message', () => {
+
+                preorderFormPageObject.getFullNameField().type(userFullName)
+                preorderFormPageObject.getEmailField().type('qwe123!')
+                preorderFormPageObject.getPhoneNumberField().type('48123123123')
+                preorderFormPageObject.getOrchardAreaField().type('2')
+                preorderFormPageObject.getStreetField().type('ul.Rynek')
+                preorderFormPageObject.getPostCodeField().type('44-100')
+                preorderFormPageObject.getCityField().type('Gliwice')
+                preorderFormPageObject.sendFormButtonClick()
+                preorderFormPageObject.getEmailField().should(($mydatefield) => {
+                    expect($mydatefield.get(0).validationMessage).to.equal('Please include an \'@\' in the email address. \'qwe123!\' is missing an \'@\'.')
+                })
+
+
+            })
+
+
+        })
+        context('when filling the pre-order form with invalid phone number data and send the form', () => {
+            it('should show the validation message', () => {
+
+                preorderFormPageObject.getFullNameField().type(userFullName)
+                preorderFormPageObject.getEmailField().type(mailboxTo)
+                preorderFormPageObject.getPhoneNumberField().type('abc-asd!')
+                preorderFormPageObject.getOrchardAreaField().type('2')
+                preorderFormPageObject.getStreetField().type('ul.Rynek')
+                preorderFormPageObject.getPostCodeField().type('44-100')
+                preorderFormPageObject.getCityField().type('Gliwice')
+                preorderFormPageObject.sendFormButtonClick()
+                preorderFormPageObject.getPhoneNumberField().should(($mydatefield) => {
+                    expect($mydatefield.get(0).validationMessage).to.equal('Please match the format requested.')
+                })
+
+
+            })
+
+
+        })
+        context('when filling the pre-order form with invalid street data and send the form', () => {
+            it('should show the validation message', () => {
+
+                preorderFormPageObject.getFullNameField().type(userFullName)
+                preorderFormPageObject.getEmailField().type(mailboxTo)
+                preorderFormPageObject.getPhoneNumberField().type('48123123123')
+                preorderFormPageObject.getOrchardAreaField().type('2')
+                preorderFormPageObject.getStreetField().type('1234!#@')
+                preorderFormPageObject.getPostCodeField().type('44-100')
+                preorderFormPageObject.getCityField().type('Gliwice')
+                preorderFormPageObject.sendFormButtonClick()
+                preorderFormPageObject.getStreetField().should(($mydatefield) => {
+                    expect($mydatefield.get(0).validationMessage).to.equal('Please match the format requested.')
+                })
+
+
+            })
+        })
+        context('when filling the pre-order form with invalid post code data and send the form', () => {
+            it.only('should show the validation message', () => {
+
+                preorderFormPageObject.getFullNameField().type(userFullName)
+                preorderFormPageObject.getEmailField().type(mailboxTo)
+                preorderFormPageObject.getPhoneNumberField().type('48123123123')
+                preorderFormPageObject.getOrchardAreaField().type('2')
+                preorderFormPageObject.getStreetField().type('ul.Rynek')
+                preorderFormPageObject.getPostCodeField().type('ad-!@#')
+                preorderFormPageObject.getCityField().type('Gliwice')
+                preorderFormPageObject.sendFormButtonClick()
+                preorderFormPageObject.getPostCodeField().should(($mydatefield) => {
+                    expect($mydatefield.get(0).validationMessage).to.equal('Please match the format requested.')
+                })
+
+
+            })
+        })
+        context('when filling the pre-order form with invalid city data and send the form', () => {
+            it.only('should show the validation message', () => {
+
+                preorderFormPageObject.getFullNameField().type(userFullName)
+                preorderFormPageObject.getEmailField().type(mailboxTo)
+                preorderFormPageObject.getPhoneNumberField().type('48123123123')
+                preorderFormPageObject.getOrchardAreaField().type('2')
+                preorderFormPageObject.getStreetField().type('ul.Rynek')
+                preorderFormPageObject.getPostCodeField().type('44-100')
+                preorderFormPageObject.getCityField().type('123!@#')
+                preorderFormPageObject.sendFormButtonClick()
+                preorderFormPageObject.getCityField().should(($mydatefield) => {
+                    expect($mydatefield.get(0).validationMessage).to.equal('Please match the format requested.')
+                })
+
+
+            })
+        })
     })
 })

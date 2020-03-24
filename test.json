@@ -1,0 +1,92 @@
+[
+	{
+		"title": "\"The amount of chemical compound\" g/ha",
+		"values": {
+			"phosphorus": {
+				"amountOfChemicalCompoundGHa": 25663,
+				"amountOfChemicalCompoundKgHa": "25.66",
+				"amountOfElementGHa": "11199.87",
+				"amountOfElementKgHa": "11.20",
+				"amountOfElementMlHa": "8099.66",
+				"amountOfElementLHa": "8.10"
+			},
+			"nitrogen": {
+				"amountOfChemicalCompoundGHa": 37919,
+				"amountOfChemicalCompoundKgHa": "37.92",
+				"amountOfElementGHa": "17687.70",
+				"amountOfElementKgHa": "17.69",
+				"amountOfElementMlHa": "28286.78",
+				"amountOfElementLHa": "28.29"
+			},
+			"potassium": {
+				"amountOfChemicalCompoundGHa": 3142,
+				"amountOfChemicalCompoundKgHa": "3.14",
+				"amountOfElementGHa": "2514.07",
+				"amountOfElementKgHa": "2.51",
+				"amountOfElementMlHa": "1440.35",
+				"amountOfElementLHa": "1.44"
+			},
+			"magnesium": {
+				"amountOfChemicalCompoundGHa": 48188,
+				"amountOfChemicalCompoundKgHa": "48.19",
+				"amountOfElementGHa": "29059.10",
+				"amountOfElementKgHa": "29.06",
+				"amountOfElementMlHa": "26781.48",
+				"amountOfElementLHa": "26.78"
+			},
+			"calcium": {
+				"amountOfChemicalCompoundGHa": 16303,
+				"amountOfChemicalCompoundKgHa": "16.30",
+				"amountOfElementGHa": "11651.61",
+				"amountOfElementKgHa": "11.65",
+				"amountOfElementMlHa": "6512.20",
+				"amountOfElementLHa": "6.51"
+			}
+		}
+	},
+	{
+		"title": "\"The amount of chemical compound\" kg/ha",
+		"values": {
+			"phosphorus": {
+				"amountOfChemicalCompoundGHa": "46669000.00",
+				"amountOfChemicalCompoundKgHa": 46669,
+				"amountOfElementGHa": "20367331.65",
+				"amountOfElementKgHa": "20367.33",
+				"amountOfElementMlHa": "14729506.51",
+				"amountOfElementLHa": "14729.51"
+			},
+			"nitrogen": {
+				"amountOfChemicalCompoundGHa": "29325000.00",
+				"amountOfChemicalCompoundKgHa": 29325,
+				"amountOfElementGHa": "13678939.50",
+				"amountOfElementKgHa": "13678.94",
+				"amountOfElementMlHa": "21875834.05",
+				"amountOfElementLHa": "21875.83"
+			},
+			"potassium": {
+				"amountOfChemicalCompoundGHa": "40204000.00",
+				"amountOfChemicalCompoundKgHa": 40204,
+				"amountOfElementGHa": "32169150.19",
+				"amountOfElementKgHa": "32169.15",
+				"amountOfElementMlHa": "18430186.59",
+				"amountOfElementLHa": "18430.19"
+			},
+			"magnesium": {
+				"amountOfChemicalCompoundGHa": "2213000.00",
+				"amountOfChemicalCompoundKgHa": 2213,
+				"amountOfElementGHa": "1334518.67",
+				"amountOfElementKgHa": "1334.52",
+				"amountOfElementMlHa": "1229920.52",
+				"amountOfElementLHa": "1229.92"
+			},
+			"calcium": {
+				"amountOfChemicalCompoundGHa": "37913000.00",
+				"amountOfChemicalCompoundKgHa": 37913,
+				"amountOfElementGHa": "27096079.88",
+				"amountOfElementKgHa": "27096.08",
+				"amountOfElementMlHa": "15144273.40",
+				"amountOfElementLHa": "15144.27"
+			}
+		}
+	}
+]

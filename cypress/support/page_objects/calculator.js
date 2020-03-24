@@ -3,6 +3,17 @@ module.exports = {
         cy.get('input[name="compoundWeightG"]').clear().type(amountOfChemicalCompoundGHa)
     },
 
+    fillCompoundWeightKg: (amountOfChemicalCompoundKgHa) => {
+        cy.get('input[name="compoundWeightKg"]').clear().type(amountOfChemicalCompoundKgHa)
+    },
+    fillElementWeightG: (amountOfElementGHa) => {
+        cy.get('input[name="weight"]').clear().type(amountOfElementGHa)
+    },
+    fillElementWeightKg: (amountOfElementKgHa) => {
+        cy.get('input[name="weightKg"]').clear().type(amountOfElementKgHa)
+    },
+    getInputOfAmountChemicalCompoundGHa: () => cy.get('input[name="compoundWeightG"]'),
+
     getInputOfAmountChemicalCompoundKgHa: () => cy.get('input[name="compoundWeightKg"]'),
 
     getInputOfAmountOfElementGHa: () => cy.get('input[name="weight"]'),
