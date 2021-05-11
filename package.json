@@ -14,6 +14,6 @@
     "gmail-tester": "^1.2.4"
   },
   "dependencies": {
-    "lodash": "^4.17.15"
+    "lodash": "^4.17.21"
   }
 }
